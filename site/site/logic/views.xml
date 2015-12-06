@@ -11,11 +11,26 @@
     <forms:form libname="form.test" style="horizontal">
         <forms:field name="option" label="option">
             <w:select>
-                <for src="1..50" dst="n">
-                    <w:option value="n">
-                        Option ${n}
-                    </w:option>
-                </for>
+                <w:option value="1">
+                    <bbcode>[b]Not your Father's select![/b]</bbcode>
+                </w:option>
+                <w:option value="2">
+                    <bbcode>[color=red]Arbitrary markup in options[/color]</bbcode>
+                </w:option>
+                <w:option value="3">
+                    <bbcode>[img https://www.willmcgugan.com/favicon.ico] Images as well</bbcode>
+                </w:option>
+                <w:option value="4">
+                    <bbcode>Works just like a standard select control...
+
+[list]
+[*] Keyboard controls
+[*] Mouse over
+[*] Writes to a form control
+[*] Cusomizable colors
+[/list]</bbcode>
+
+                </w:option>
             </w:select>
         </forms:field>
         <forms:submit-button />
@@ -25,10 +40,7 @@
         <title>Tests</title>
         <include-css path="css/debug.css" from="moya.debug"/>
         <section name="body">
-            <console-render obj=".theme.colors" />
-            <console-render obj="form.data"/>
             <render src="form"/>
-
         </section>
     </content>
 
