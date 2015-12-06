@@ -1,0 +1,42 @@
+<moya xmlns="http://moyaproject.com"
+    xmlns:let="http://moyaproject.com/let"
+    xmlns:forms="http://moyaproject.com/forms"
+    xmlns:w="http://moyaproject.com/widgets">
+
+    <!-- Libraries will typically define a mountpoint to add URLs -->
+    <mountpoint name="main">
+        <url route="/" methods="GET,POST" view="#view.test" name="test"/>
+    </mountpoint>
+
+    <forms:form libname="form.test" style="horizontal">
+        <forms:field name="option" label="option">
+            <w:select>
+                <for src="1..50" dst="n">
+                    <w:option value="n">
+                        Option ${n}
+                    </w:option>
+                </for>
+            </w:select>
+        </forms:field>
+        <forms:submit-button />
+    </forms:form>
+
+    <content libname="content.test">
+        <title>Tests</title>
+        <include-css path="css/debug.css" from="moya.debug"/>
+        <section name="body">
+            <console-render obj=".theme.colors" />
+            <console-render obj="form.data"/>
+            <render src="form"/>
+
+        </section>
+    </content>
+
+    <view libname="view.test" content="#content.test">
+        <forms:get form="#form.test" dst="form"/>
+        <forms:validate src="form">
+            <echo obj="form.data"/>
+        </forms:validate>
+    </view>
+
+</moya>

@@ -1,0 +1,12 @@
+<moya xmlns="http://moyaproject.com"
+      xmlns:links="http://moyaproject.com/links"
+      xmlns:html="http://moyaproject.com/html"
+      xmlns:w="http://moyaproject.com/widgets">
+
+    <content libname="content.base">
+        <links:get dst="navlinks" />
+        <w:add-theme-style/>
+    </content>
+
+</moya>
+
